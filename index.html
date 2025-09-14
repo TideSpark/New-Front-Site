@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Contractor Services - Your Trusted Partner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="//db.onlinewebfonts.com/c/9e90327a2780fd7208bc4f11eacd2853?family=Pippen" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div data-load-wrap class="loader">
+        <div data-load-bg class="loader__bg">
+            <div data-load-progress class="loader__bg-bar"></div>
+        </div>
+        <div data-load-container class="loader__container">
+            <div class="loader__logo-wrap">
+                <div class="loader__logo-item is--base">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 280 60" fill="none" class="loader__logo-img">
+                        <text x="10" y="45" font-family="Pippin, var(--font-family)" font-size="32" font-weight="bold" fill="currentColor">Tide Spark</text>
+                    </svg>
+                </div>
+                <div data-load-logo class="loader__logo-item is--top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 280 60" fill="none" class="loader__logo-img">
+                        <text x="10" y="45" font-family="Pippin, var(--font-family)" font-size="32" font-weight="bold" fill="currentColor">Tide Spark</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="loader__text-wrap">
+                <span data-load-text data-load-reset class="loader__text-el">Loading</span>
+                <span data-load-text data-load-reset class="loader__text-el">Welcome</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="header-container">
+            <nav class="nav-container">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="#3b82f6" stroke-width="4"/>
+                        <path d="M10 28L15 12L18 25L22 15L25 25L28 12L33 28" fill="#3b82f6" stroke="none"/>
+                    </svg>
+                    <span class="logo-text">BuildPro</span>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                </div>
+                <div class="contact-info">
+                    <a href="#contact" class="contact-link">Contact</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Transform Your Construction</span>
+                    <br>
+                    <span>Vision Into Reality</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Experience our comprehensive construction services through a personalized demo.
+                    See how we bring exceptional craftsmanship and innovative solutions to your project.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-white" data-btn-hover data-theme="white">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Explore Our Services</span>
+                    </button>
+                    <div class="ratings">
+                        <div class="stars">
+                            <span>★★★★★</span>
+                        </div>
+                        <p class="ratings-text">1000+ satisfied clients</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-form">
+                <div class="demo-form-container">
+                    <h3 class="form-title">Get a Free Demo</h3>
+                    <p class="form-subtitle">See our services in action</p>
+                    <form class="demo-form" id="demoForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="industry" name="industry" required>
+                                <option value="">Select Industry</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="industrial">Industrial</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="retail">Retail</option>
+                                <option value="government">Government</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary demo-btn" data-btn-hover data-theme="primary">
+                            <div class="btn__bg"></div>
+                            <div class="btn__circle-wrap">
+                                <div class="btn__circle"></div>
+                            </div>
+                            <span class="btn__text">Request Demo</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="services" class="features">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive solutions for all your construction needs</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="20" fill="#edf3fc"/>
+                            <path d="M16 24L22 30L32 18" stroke="#184fa1" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Residential Construction</h3>
+                    <p>Custom homes and residential projects tailored to your lifestyle and budget.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <rect x="8" y="8" width="32" height="32" rx="8" fill="#edf3fc"/>
+                            <rect x="16" y="16" width="16" height="16" rx="4" fill="#184fa1"/>
+                        </svg>
+                    </div>
+                    <h3>Commercial Projects</h3>
+                    <p>Office buildings, retail spaces, and industrial facilities built to specification.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <path d="M24 8L8 20V40H40V20L24 8Z" fill="#edf3fc"/>
+                            <rect x="20" y="28" width="8" height="12" fill="#184fa1"/>
+                        </svg>
+                    </div>
+                    <h3>Renovations</h3>
+                    <p>Transform existing spaces with our expert renovation and remodeling services.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <circle cx="24" cy="24" r="20" fill="#edf3fc"/>
+                            <path d="M24 12V36M12 24H36" stroke="#184fa1" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>End-to-end project coordination ensuring timely completion and quality results.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <rect x="8" y="12" width="32" height="24" rx="4" fill="#edf3fc"/>
+                            <circle cx="24" cy="24" r="6" fill="#184fa1"/>
+                        </svg>
+                    </div>
+                    <h3>Design & Planning</h3>
+                    <p>Architectural design and planning services to bring your vision to life.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48">
+                            <path d="M12 36L24 12L36 36H12Z" fill="#edf3fc"/>
+                            <circle cx="24" cy="28" r="4" fill="#184fa1"/>
+                        </svg>
+                    </div>
+                    <h3>Sustainable Building</h3>
+                    <p>Eco-friendly construction solutions for a sustainable future.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve Section -->
+    <section id="industries" class="industries">
+        <div class="container">
+            <h2 class="section-title">Industries We Serve</h2>
+            <p class="section-subtitle">Trusted construction partner across diverse sectors</p>
+
+            <div class="looping-words">
+                <div class="looping-words__containers">
+                    <ul data-looping-words-list="" class="looping-words__list">
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Residential</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Commercial</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Industrial</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Healthcare</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Education</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Hospitality</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Retail</p>
+                        </li>
+                        <li class="looping-words__list">
+                            <p class="looping-words__p">Government</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="looping-words__fade"></div>
+                <div data-looping-words-selector="" class="looping-words__selector">
+                    <div class="looping-words__edge"></div>
+                    <div class="looping-words__edge is--2"></div>
+                    <div class="looping-words__edge is--3"></div>
+                    <div class="looping-words__edge is--4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title text-draw" data-draw-line="">
+                        <span class="text-draw__span">Why Choose Us</span>
+                        <div data-draw-line-box="" class="text-draw__box"></div>
+                    </h2>
+                    <p class="lead-text">
+                        With over 20 years of experience in the construction industry, we've built a reputation
+                        for excellence, reliability, and innovation.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Expert Team Members</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15</h3>
+                            <p>Industry Awards</p>
+                        </div>
+                    </div>
+                    <ul class="benefits-list">
+                        <li>Licensed and insured professionals</li>
+                        <li>Transparent pricing with no hidden costs</li>
+                        <li>On-time project delivery guarantee</li>
+                        <li>24/7 customer support</li>
+                        <li>Sustainable building practices</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder-2">
+                        <svg viewBox="0 0 400 500" fill="none">
+                            <rect width="400" height="500" rx="20" fill="url(#gradient2)"/>
+                            <rect x="50" y="100" width="100" height="150" rx="10" fill="white" opacity="0.2"/>
+                            <rect x="170" y="150" width="100" height="150" rx="10" fill="white" opacity="0.2"/>
+                            <rect x="290" y="100" width="60" height="150" rx="10" fill="white" opacity="0.2"/>
+                            <rect x="50" y="270" width="300" height="100" rx="10" fill="white" opacity="0.15"/>
+                            <defs>
+                                <linearGradient id="gradient2" x1="0" y1="0" x2="400" y2="500">
+                                    <stop offset="0%" stop-color="#3b82f6"/>
+                                    <stop offset="100%" stop-color="#184fa1"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Recent Projects</h2>
+            <p class="section-subtitle">Showcasing our commitment to quality and excellence</p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <svg viewBox="0 0 350 250" fill="none">
+                            <rect width="350" height="250" fill="#edf3fc"/>
+                            <rect x="50" y="50" width="250" height="150" fill="#184fa1" opacity="0.2"/>
+                            <rect x="75" y="75" width="200" height="100" fill="#184fa1" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Modern Office Complex</h3>
+                        <p>40,000 sq ft commercial space</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <svg viewBox="0 0 350 250" fill="none">
+                            <rect width="350" height="250" fill="#edf3fc"/>
+                            <circle cx="175" cy="125" r="80" fill="#184fa1" opacity="0.2"/>
+                            <circle cx="175" cy="125" r="50" fill="#184fa1" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Luxury Residential Villa</h3>
+                        <p>Custom 5-bedroom home</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <svg viewBox="0 0 350 250" fill="none">
+                            <rect width="350" height="250" fill="#edf3fc"/>
+                            <path d="M50 200L175 50L300 200H50Z" fill="#184fa1" opacity="0.2"/>
+                            <rect x="150" y="150" width="50" height="50" fill="#184fa1" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Retail Shopping Center</h3>
+                        <p>20-store retail complex</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <svg viewBox="0 0 350 250" fill="none">
+                            <rect width="350" height="250" fill="#edf3fc"/>
+                            <rect x="100" y="75" width="150" height="100" rx="20" fill="#184fa1" opacity="0.2"/>
+                            <rect x="125" y="100" width="100" height="50" rx="10" fill="#184fa1" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Healthcare Facility</h3>
+                        <p>State-of-the-art medical center</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Our Pricing Plans</h2>
+            <p class="section-subtitle">Transparent pricing for projects of all sizes. Choose the plan that fits your needs.</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <p class="pricing-description">Perfect for small residential projects</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">From $25,000</span>
+                        <span class="price-period">per project</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Single-room renovations</li>
+                        <li>Basic materials included</li>
+                        <li>Standard timeline</li>
+                        <li>Email support</li>
+                        <li>1-year warranty</li>
+                        <li>Basic project management</li>
+                    </ul>
+                    <button class="btn btn-secondary pricing-btn" data-btn-hover data-theme="secondary">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Get Started</span>
+                    </button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p class="pricing-description">Ideal for commercial and multi-room projects</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">From $75,000</span>
+                        <span class="price-period">per project</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Multi-room renovations</li>
+                        <li>Premium materials</li>
+                        <li>Expedited timeline</li>
+                        <li>Priority phone support</li>
+                        <li>3-year warranty</li>
+                        <li>Dedicated project manager</li>
+                        <li>3D design visualization</li>
+                        <li>Custom solutions</li>
+                    </ul>
+                    <button class="btn btn-primary pricing-btn" data-btn-hover data-theme="primary">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Get Started</span>
+                    </button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p class="pricing-description">Large-scale developments and commercial buildings</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">From $250,000</span>
+                        <span class="price-period">per project</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Complete building construction</li>
+                        <li>Luxury materials</li>
+                        <li>Fast-track scheduling</li>
+                        <li>24/7 dedicated support</li>
+                        <li>5-year warranty</li>
+                        <li>Full project team</li>
+                        <li>Advanced 3D modeling</li>
+                        <li>Custom architecture</li>
+                        <li>Regulatory compliance</li>
+                        <li>Post-completion maintenance</li>
+                    </ul>
+                    <button class="btn btn-secondary pricing-btn" data-btn-hover data-theme="secondary">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Contact Sales</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pricing-note">
+                <p>All prices are estimates and may vary based on project scope, materials, and location. Contact us for a detailed quote tailored to your specific needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title text-draw" data-draw-line="">
+                <span class="text-draw__span">What Our Clients Say</span>
+                <div data-draw-line-box="" class="text-draw__box"></div>
+            </h2>
+        </div>
+
+        <div data-slider-autoplay-duration="4" aria-label="Testimonial Slider" data-centered-slider="wrapper" data-slider-autoplay="true" class="centered-slider-group">
+            <div class="container">
+                <div class="centered-slider-content">
+                    <ul role="tablist" class="centered-slider-bullet__list">
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#3b82f6"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">JS</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#1e40af"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">SJ</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#2563eb"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">MB</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#1d4ed8"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">LC</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#1e3a8a"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">ER</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#3730a3"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">DT</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#312e81"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">AW</text>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="centered-slider-bullet__item">
+                            <button data-centered-slider="bullet" role="tab" aria-selected="false" class="centered-slider-bullet">
+                                <svg width="40" height="40" viewBox="0 0 40 40" fill="#3b82f6">
+                                    <circle cx="20" cy="20" r="18" fill="#1e1b4b"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">KM</text>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="centered-slider-row">
+                <div aria-label="slides" data-centered-slider="list" role="group" class="centered-slider-list">
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Exceptional work! The team delivered our project on time and exceeded our expectations in every way. Their professionalism and attention to detail made the entire process seamless."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#3b82f6"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">JS</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">John Smith</div>
+                                    <span class="slide-demo__eyebrow">CEO, Tech Corp</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Professional, reliable, and committed to quality. They transformed our vision into reality perfectly. I couldn't be happier with the final result."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#1e40af"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">SJ</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Sarah Johnson</div>
+                                    <span class="slide-demo__eyebrow">Homeowner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"The best construction company we've worked with. Their attention to detail is unmatched and the quality of work speaks for itself. Highly recommended!"</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#2563eb"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">MB</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Michael Brown</div>
+                                    <span class="slide-demo__eyebrow">Property Developer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Outstanding service from start to finish. The team was professional, efficient, and delivered exactly what we needed on schedule and within budget."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#1d4ed8"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">LC</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Lisa Chen</div>
+                                    <span class="slide-demo__eyebrow">Restaurant Owner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Incredible craftsmanship and attention to detail. They turned our old office space into a modern, functional workplace that our team loves."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#1e3a8a"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">ER</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Emily Rodriguez</div>
+                                    <span class="slide-demo__eyebrow">Marketing Director</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Exceptional project management and communication throughout. They kept us informed every step of the way and delivered superior results."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#3730a3"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">DT</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">David Thompson</div>
+                                    <span class="slide-demo__eyebrow">Facility Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Top-notch service and quality workmanship. They completed our renovation ahead of schedule and exceeded all our expectations. Will definitely work with them again."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#312e81"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">AW</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Angela Wilson</div>
+                                    <span class="slide-demo__eyebrow">Store Owner</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-centered-slider="slide" class="centered-slider-slide">
+                        <div class="centered-slider-slide__inner">
+                            <div class="stars">★★★★★</div>
+                            <p class="slide-demo__description">"Professional team with incredible expertise. They solved complex challenges with creative solutions and delivered a project that exceeded our vision."</p>
+                            <div class="slide-demo__details">
+                                <svg width="40" height="40" viewBox="0 0 40 40" class="slide-demo__avatar">
+                                    <circle cx="20" cy="20" r="18" fill="#1e1b4b"/>
+                                    <text x="20" y="26" text-anchor="middle" fill="white" font-size="16" font-weight="bold">KM</text>
+                                </svg>
+                                <div>
+                                    <div class="slide-demo__name">Kevin Martinez</div>
+                                    <span class="slide-demo__eyebrow">Architect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="centered-slider-content">
+                    <div class="centered-slider-buttons">
+                        <button aria-label="previous slide" data-centered-slider="prev-button" class="centered-slider-button is--prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none" class="slider-button-arrow">
+                                <path d="M14 19L21 12L14 5" stroke="currentColor" stroke-miterlimit="10"></path>
+                                <path d="M21 12H2" stroke="currentColor" stroke-miterlimit="10"></path>
+                            </svg>
+                        </button>
+                        <button aria-label="next slide" data-centered-slider="next-button" class="centered-slider-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none" class="slider-button-arrow">
+                                <path d="M14 19L21 12L14 5" stroke="currentColor" stroke-miterlimit="10"></path>
+                                <path d="M21 12H2" stroke="currentColor" stroke-miterlimit="10"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to the most common questions about our construction services</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>How long does a typical construction project take?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Project timelines vary depending on scope and complexity. Small residential renovations typically take 2-4 weeks, while larger commercial projects can range from 3-12 months. We provide detailed timelines during the planning phase and keep you updated throughout the process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>Do you handle permits and inspections?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Yes, we handle all necessary permits and coordinate inspections with local authorities. Our team is familiar with building codes and regulations, ensuring your project meets all requirements and passes inspections smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>What's included in your pricing estimates?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Our estimates include labor, materials, permits, and project management. We provide transparent pricing with detailed breakdowns so you know exactly what you're paying for. Additional costs like change orders or unforeseen issues are discussed and approved before proceeding.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>Are you licensed and insured?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Absolutely. We are fully licensed contractors with comprehensive liability and workers' compensation insurance. We can provide proof of licensing and insurance certificates upon request for your peace of mind.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>How do you handle change orders during construction?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>We understand that projects sometimes evolve. All change orders are documented in writing with clear cost and timeline implications. We discuss any changes with you before implementation and get your approval to ensure no surprises.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>What warranty do you provide on your work?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>We offer comprehensive warranties ranging from 1-5 years depending on the project scope and service level. Our warranties cover workmanship and structural elements, giving you confidence in the quality and longevity of our construction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>Do you provide cleanup after project completion?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Yes, complete cleanup is included in all our projects. We maintain a clean and safe work environment throughout construction and perform thorough final cleanup, including debris removal and site restoration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" data-faq-toggle>
+                        <span>How do you communicate project updates?</span>
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>We provide regular updates through your preferred communication method - email, phone, or text. Our project managers send weekly progress reports with photos and schedule updates. You'll always know what's happening with your project.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="text-draw" data-draw-line="">
+                    <span class="text-draw__span">Ready to Start Your Project?</span>
+                    <div data-draw-line-box="" class="text-draw__box"></div>
+                </h2>
+                <p>Get in touch with our team today for a free consultation and quote.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-white" data-btn-hover data-theme="white">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Get Free Quote</span>
+                    </button>
+                    <button class="btn btn-outline" data-btn-hover data-theme="outline">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Schedule Consultation</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>info@buildpro.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Address</h3>
+                        <p>123 Construction Ave<br>Building City, BC 12345</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Hours</h3>
+                        <p>Mon-Fri: 8AM-6PM<br>Sat: 9AM-4PM</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Select Service</option>
+                            <option>Residential Construction</option>
+                            <option>Commercial Projects</option>
+                            <option>Renovations</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <textarea placeholder="Tell us about your project" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-white" data-btn-hover data-theme="white">
+                        <div class="btn__bg"></div>
+                        <div class="btn__circle-wrap">
+                            <div class="btn__circle"></div>
+                        </div>
+                        <span class="btn__text">Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="white" stroke-width="4"/>
+                            <path d="M10 28L15 12L18 25L22 15L25 25L28 12L33 28" fill="white" stroke="none"/>
+                        </svg>
+                        <span>BuildPro</span>
+                    </div>
+                    <p>Building excellence since 2000</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Residential</a></li>
+                        <li><a href="#">Commercial</a></li>
+                        <li><a href="#">Renovations</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuildPro. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
