@@ -750,25 +750,133 @@ function horizontalLoop(items, config) {
   return timeline;
 }
 
-// FAQ Accordion Functionality
+// FAQ Accordion Functionality with Smooth GSAP Animations
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const content = answer.querySelector('.faq-content');
+        const icon = item.querySelector('.faq-icon');
+
+        // Set initial states
+        gsap.set(answer, { height: 0 });
+        gsap.set(content, { opacity: 1, y: 0 });
 
         question.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
 
-            // Close all FAQ items
-            faqItems.forEach(faqItem => {
-                faqItem.classList.remove('active');
+            // Close all other FAQ items with smooth animations
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherContent = otherAnswer.querySelector('.faq-content');
+                    const otherIcon = otherItem.querySelector('.faq-icon');
+
+                    // Smooth close animation
+                    gsap.to(otherContent, {
+                        opacity: 0,
+                        y: -10,
+                        duration: 0.2,
+                        ease: "power1.in"
+                    });
+
+                    gsap.to(otherAnswer, {
+                        height: 0,
+                        duration: 0.4,
+                        ease: "power2.inOut",
+                        delay: 0.1
+                    });
+
+                    gsap.to(otherIcon, {
+                        rotation: 0,
+                        duration: 0.3,
+                        ease: "back.out(1.7)"
+                    });
+
+                    otherItem.classList.remove('active');
+                }
             });
 
-            // If this item wasn't active, open it
             if (!isActive) {
+                // Open this item with smooth animation
                 item.classList.add('active');
+
+                // Calculate dynamic height
+                gsap.set(answer, { height: "auto" });
+                const targetHeight = answer.offsetHeight;
+                gsap.set(answer, { height: 0 });
+
+                // Animate height expansion
+                gsap.to(answer, {
+                    height: targetHeight,
+                    duration: 0.5,
+                    ease: "power2.out"
+                });
+
+                // Content fade-in with slight delay and slide up
+                gsap.fromTo(content,
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4,
+                        delay: 0.2,
+                        ease: "power1.out"
+                    }
+                );
+
+                // Enhanced icon rotation with bounce
+                gsap.to(icon, {
+                    rotation: 45,
+                    duration: 0.4,
+                    ease: "back.out(1.7)"
+                });
+
+            } else {
+                // Close this item
+                gsap.to(content, {
+                    opacity: 0,
+                    y: -10,
+                    duration: 0.2,
+                    ease: "power1.in"
+                });
+
+                gsap.to(answer, {
+                    height: 0,
+                    duration: 0.4,
+                    ease: "power2.inOut",
+                    delay: 0.1
+                });
+
+                gsap.to(icon, {
+                    rotation: 0,
+                    duration: 0.3,
+                    ease: "back.out(1.7)"
+                });
+
+                item.classList.remove('active');
             }
+        });
+
+        // Add hover micro-interactions
+        question.addEventListener('mouseenter', () => {
+            if (!item.classList.contains('active')) {
+                gsap.to(item, {
+                    scale: 1.02,
+                    duration: 0.2,
+                    ease: "power1.out"
+                });
+            }
+        });
+
+        question.addEventListener('mouseleave', () => {
+            gsap.to(item, {
+                scale: 1,
+                duration: 0.2,
+                ease: "power1.out"
+            });
         });
     });
 }
@@ -1006,6 +1114,332 @@ function initLogoRevealLoader() {
     }
 }
 
+// Tab System with Autoplay
+function initTabSystem() {
+    const wrappers = document.querySelectorAll('[data-tabs="wrapper"]');
+
+    wrappers.forEach((wrapper) => {
+        const contentItems = wrapper.querySelectorAll('[data-tabs="content-item"]');
+        const visualItems = wrapper.querySelectorAll('[data-tabs="visual-item"]');
+
+        const autoplay = wrapper.dataset.tabsAutoplay === "true";
+        const autoplayDuration = parseInt(wrapper.dataset.tabsAutoplayDuration) || 5000;
+
+        let activeContent = null; // keep track of active item/link
+        let activeVisual = null;
+        let isAnimating = false;
+        let progressBarTween = null; // to stop/start the progress bar
+
+        function startProgressBar(index) {
+            if (progressBarTween) progressBarTween.kill();
+            const bar = contentItems[index].querySelector('[data-tabs="item-progress"]');
+            if (!bar) return;
+
+            // In this function, you can basically do anything you want, that should happen as a tab is active
+            // Maybe you have a circle filling, some other element growing, you name it.
+            gsap.set(bar, { scaleX: 0, transformOrigin: "left center" });
+            progressBarTween = gsap.to(bar, {
+                scaleX: 1,
+                duration: autoplayDuration / 1000,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    if (!isAnimating) {
+                        const nextIndex = (index + 1) % contentItems.length;
+                        switchTab(nextIndex); // once bar is full, set next to active – this is important
+                    }
+                },
+            });
+        }
+
+        function switchTab(index) {
+            if (isAnimating || contentItems[index] === activeContent) return;
+
+            isAnimating = true;
+            if (progressBarTween) progressBarTween.kill(); // Stop any running progress bar here
+
+            const outgoingContent = activeContent;
+            const outgoingVisual = activeVisual;
+            const outgoingBar = outgoingContent?.querySelector('[data-tabs="item-progress"]');
+
+            const incomingContent = contentItems[index];
+            const incomingVisual = visualItems[index];
+            const incomingBar = incomingContent.querySelector('[data-tabs="item-progress"]');
+
+            outgoingContent?.classList.remove("active");
+            outgoingVisual?.classList.remove("active");
+            incomingContent.classList.add("active");
+            incomingVisual.classList.add("active");
+
+            const tl = gsap.timeline({
+                defaults: { duration: 0.65, ease: "power3" },
+                onComplete: () => {
+                    activeContent = incomingContent;
+                    activeVisual = incomingVisual;
+                    isAnimating = false;
+                    if (autoplay) startProgressBar(index); // Start autoplay bar here
+                },
+            });
+
+            // Wrap 'outgoing' in a check to prevent warnings on first run of the function
+            // Of course, during first run (on page load), there's no 'outgoing' tab yet!
+            if (outgoingContent) {
+                outgoingContent.classList.remove("active");
+                outgoingVisual?.classList.remove("active");
+                tl.set(outgoingBar, { transformOrigin: "right center" })
+                    .to(outgoingBar, { scaleX: 0, duration: 0.3 }, 0)
+                    .to(outgoingVisual, { autoAlpha: 0, xPercent: 3 }, 0)
+                    .to(outgoingContent.querySelector('[data-tabs="item-details"]'), { height: 0 }, 0);
+            }
+
+            incomingContent.classList.add("active");
+            incomingVisual.classList.add("active");
+            tl.fromTo(incomingVisual, { autoAlpha: 0, xPercent: 3 }, { autoAlpha: 1, xPercent: 0 }, 0.3)
+                .fromTo(incomingContent.querySelector('[data-tabs="item-details"]'), { height: 0 }, { height: "auto" }, 0)
+                .set(incomingBar, { scaleX: 0, transformOrigin: "left center" }, 0);
+        }
+
+        // on page load, set first to active
+        // idea: you could wrap this in a scrollTrigger
+        // so it will only start once a user reaches this section
+        switchTab(0);
+
+        // switch tabs on click
+        contentItems.forEach((item, i) =>
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (item === activeContent) return; // ignore click if current one is already active
+                switchTab(i);
+            })
+        );
+    });
+}
+
+// Logo Wall Cycle Animation
+function initLogoWallCycle() {
+    const loopDelay = 1.5;   // Loop Duration
+    const duration  = 0.9;   // Animation Duration
+
+    document.querySelectorAll('[data-logo-wall-cycle-init]').forEach(root => {
+        const list   = root.querySelector('[data-logo-wall-list]');
+        const items  = Array.from(list.querySelectorAll('[data-logo-wall-item]'));
+
+        const shuffleFront = root.getAttribute('data-logo-wall-shuffle') !== 'false';
+        const originalTargets = items
+            .map(item => item.querySelector('[data-logo-wall-target]'))
+            .filter(Boolean);
+
+        let visibleItems   = [];
+        let visibleCount   = 0;
+        let pool           = [];
+        let pattern        = [];
+        let patternIndex   = 0;
+        let tl;
+
+        function isVisible(el) {
+            return window.getComputedStyle(el).display !== 'none';
+        }
+
+        function shuffleArray(arr) {
+            const a = arr.slice();
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
+        let cyclingInterval = null;
+
+        function resetLogoTransform(element) {
+            // Helper function to ensure consistent logo positioning - GSAP handles all centering
+            gsap.set(element, {
+                xPercent: -50,
+                yPercent: -50,
+                autoAlpha: 1,
+                scale: 1,
+                rotation: 0,
+                x: 0,
+                y: 0,
+                transformOrigin: "center center"
+            });
+        }
+
+        function setup() {
+            if (tl) {
+                tl.kill();
+                tl = null;
+            }
+            if (cyclingInterval) {
+                clearInterval(cyclingInterval);
+                cyclingInterval = null;
+            }
+            visibleItems = items.filter(isVisible);
+            visibleCount = visibleItems.length;
+
+            pattern = shuffleArray(
+                Array.from({ length: visibleCount }, (_, i) => i)
+            );
+            patternIndex = 0;
+
+            // remove all injected targets
+            items.forEach(item => {
+                item.querySelectorAll('[data-logo-wall-target]').forEach(old => old.remove());
+            });
+
+            pool = originalTargets.map(n => n.cloneNode(true));
+
+            let front, rest;
+            if (shuffleFront) {
+                const shuffledAll = shuffleArray(pool);
+                front = shuffledAll.slice(0, visibleCount);
+                rest  = shuffleArray(shuffledAll.slice(visibleCount));
+            } else {
+                front = pool.slice(0, visibleCount);
+                rest  = shuffleArray(pool.slice(visibleCount));
+            }
+            pool = front.concat(rest);
+
+            // Initialize visible logos with proper GSAP setup
+            for (let i = 0; i < visibleCount; i++) {
+                const parent =
+                    visibleItems[i].querySelector('[data-logo-wall-target-parent]') ||
+                    visibleItems[i];
+                const logo = pool.shift();
+
+                // Apply consistent GSAP properties to initial logos
+                resetLogoTransform(logo);
+                parent.appendChild(logo);
+            }
+
+            // Start cycling with interval instead of buggy timeline
+            startCycling();
+        }
+
+        function startCycling() {
+            // Clear any existing interval
+            if (cyclingInterval) {
+                clearInterval(cyclingInterval);
+            }
+
+            // Start cycling with proper timing
+            cyclingInterval = setInterval(() => {
+                if (pool.length > 0) {
+                    swapNext();
+                }
+            }, loopDelay * 1000);
+        }
+
+        function swapNext() {
+            const nowCount = items.filter(isVisible).length;
+            if (nowCount !== visibleCount) {
+                setup();
+                return;
+            }
+            // Safety checks
+            if (!pool.length) {
+                console.warn('Logo wall pool is empty, refilling...');
+                // Refill pool with copies of original targets
+                pool = originalTargets.map(n => n.cloneNode(true));
+                return;
+            }
+
+            const idx = pattern[patternIndex % visibleCount];
+            patternIndex++;
+
+            const container = visibleItems[idx];
+            const parent =
+                container.querySelector('[data-logo-wall-target-parent]') ||
+                container;
+            const existing = parent.querySelectorAll('[data-logo-wall-target]');
+            if (existing.length > 1) return;
+
+            const current = parent.querySelector('[data-logo-wall-target]');
+            const incoming = pool.shift();
+
+            if (!current || !incoming) {
+                console.warn('Missing current or incoming logo element');
+                return;
+            }
+
+            // Set initial state - incoming logo starts below center
+            gsap.set(incoming, {
+                xPercent: -50,
+                yPercent: 0,
+                autoAlpha: 0,
+                scale: 1,
+                rotation: 0,
+                x: 0,
+                y: 0,
+                transformOrigin: "center center"
+            });
+            parent.appendChild(incoming);
+
+            if (current) {
+                gsap.to(current, {
+                    yPercent: -100,
+                    autoAlpha: 0,
+                    duration,
+                    ease: "expo.inOut",
+                    onComplete: () => {
+                        if (current.parentNode) {
+                            current.remove();
+                        }
+                        // Reset all properties and return to pool
+                        resetLogoTransform(current);
+                        pool.push(current);
+                    }
+                });
+            }
+
+            // Animate incoming logo to centered position
+            gsap.to(incoming, {
+                yPercent: -50,
+                autoAlpha: 1,
+                duration: duration,
+                delay: 0.1,
+                ease: "expo.inOut"
+            });
+        }
+
+        setup();
+
+        ScrollTrigger.create({
+            trigger: root,
+            start: 'top bottom',
+            end: 'bottom top',
+            onEnter: () => {
+                if (!cyclingInterval) startCycling();
+            },
+            onLeave: () => {
+                if (cyclingInterval) {
+                    clearInterval(cyclingInterval);
+                    cyclingInterval = null;
+                }
+            },
+            onEnterBack: () => {
+                if (!cyclingInterval) startCycling();
+            },
+            onLeaveBack: () => {
+                if (cyclingInterval) {
+                    clearInterval(cyclingInterval);
+                    cyclingInterval = null;
+                }
+            }
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (cyclingInterval) {
+                    clearInterval(cyclingInterval);
+                    cyclingInterval = null;
+                }
+            } else {
+                if (!cyclingInterval) startCycling();
+            }
+        });
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initLogoRevealLoader();
   initSliders();
@@ -1013,6 +1447,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initDirectionalButtonHovers();
   initLoopingWordsWithSelector();
   initDemoForm();
+  initTabSystem();
+  initLogoWallCycle();
 });
 
 console.log('🚀 Website loaded successfully!');
